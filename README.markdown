@@ -1,3 +1,3 @@
-An attempt to formalize a set of scripts that scrape the Texas Railroad Commission's oil and gas[production data Website]](http://webapps2.rrc.state.tx.us/EWA/productionQueryAction.do) to gather data on natural gas flaring in Texas and, specifically, the Eagle Ford Shale play.  
+An attempt to formalize a set of scripts that scrape the Texas Railroad Commission's oil and gas[production data Website](http://webapps2.rrc.state.tx.us/EWA/productionQueryAction.do) to gather data on natural gas flaring in Texas and, specifically, the Eagle Ford Shale play.  
 
 These scripts originally generated some of the numbers used in the [Up In Flames](http://www.expressnews.com/business/eagleford/item/Up-in-Flames-Day-1-Flares-in-Eagle-Ford-Shale-32626.php) project, published in August 2014. 
