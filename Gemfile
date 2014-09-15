@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+#scraping gems
+gem 'nokogiri', :require => 'nokogiri'
+gem 'watir-webdriver', :require => 'watir-webdriver'
+require 'csv'
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
