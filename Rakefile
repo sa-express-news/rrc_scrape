@@ -4,3 +4,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+namespace :rrc_flaring do
+
+  task :get_lease_pages => :environment do
+    get_lease_pages(ENV["COUNTY"])
+    end
+                   
+end
