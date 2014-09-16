@@ -2,7 +2,7 @@ class RRCCounty
     attr_accessor :current_page, :browser, :county, :start_page_num,
                   :browser, :url, :current_page, :raw_html_path
 
-    def initialize(county, start_page_num=nil)
+    def initialize(county, year, start_page_num=nil)
         @county = county
         @start_page_num = start_page_num.to_i - 1
         @browser = Watir::Browser.new(:ff) 
@@ -12,9 +12,9 @@ class RRCCounty
         @browser.radio(:value =>'Lease').set
         @browser.radio(:value => 'Both').set
         @browser.select_list(:name => 'searchArgs.startMonthArg').select('Jan')
-        @browser.select_list(:name => 'searchArgs.startYearArg').select('2013')
+        @browser.select_list(:name => 'searchArgs.startYearArg').select("#{year}")
         @browser.select_list(:name => 'searchArgs.endMonthArg').select('Dec')
-        @browser.select_list(:name => 'searchArgs.endYearArg').select('2013')
+        @browser.select_list(:name => 'searchArgs.endYearArg').select("#{year}")
         @browser.select_list(:name => 'searchArgs.onShoreCountyCodeArg').select("#{@county}")
         @browser.button(:value => 'Submit').click
 
@@ -155,7 +155,7 @@ class RRCCounty
 
 end
 
-def get_lease_pages(county, start_page_num)
-    scraper = RRCCounty.new(county, start_page_num)
+def get_lease_pages(county, year, start_page_num)
+    scraper = RRCCounty.new(county, year, start_page_num)
     scraper.start   
 end
