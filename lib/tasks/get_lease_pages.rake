@@ -2,13 +2,9 @@ class RRCCounty
     attr_accessor :current_page, :browser, :county, :start_page_num,
                   :browser, :url, :current_page, :raw_html_path
 
-    def initialize(county)
-        @start_page_num = nil
-
-        #File.open("../../raw_html/#{@county}/#{@current_page}.html", 'w') { |f| f.write(html) } 
-
+    def initialize(county, start_page_num=nil)
         @county = county
-        # @start_page_num = ARGV[1] || nil
+        @start_page_num = start_page_num.to_i - 1
         @browser = Watir::Browser.new(:ff) 
         @url = "http://webapps2.rrc.state.tx.us/EWA/productionQueryAction.do"
         @current_page = 1
@@ -159,7 +155,7 @@ class RRCCounty
 
 end
 
-def get_lease_pages(county)
-    scraper = RRCCounty.new(county)
+def get_lease_pages(county, start_page_num)
+    scraper = RRCCounty.new(county, start_page_num)
     scraper.start   
 end
