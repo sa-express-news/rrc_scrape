@@ -2,12 +2,12 @@ class RRCCounty
     attr_accessor :current_page, :browser, :county, :start_page_num,
                   :browser, :url, :current_page, :raw_html_path
 
-    def initialize(county, year, start_page_num=nil)
+    def initialize(county, year, start_page_num=1)
         @county = county
-        @start_page_num = start_page_num.to_i - 1
+        @start_page_num = start_page_num.to_i
         @browser = Watir::Browser.new(:ff) 
         @url = "http://webapps2.rrc.state.tx.us/EWA/productionQueryAction.do"
-        @current_page = 1
+        @current_page = start_page_num.to_i
         @browser.goto(@url)
         @browser.radio(:value =>'Lease').set
         @browser.radio(:value => 'Both').set
@@ -97,7 +97,9 @@ class RRCCounty
     
 
     def proceed_to_page_num
-        @start_page_num.to_i.times do 
+        click_next = @start_page_num - 1
+
+        click_next.times do 
             next_page
             sleep 1
         end
