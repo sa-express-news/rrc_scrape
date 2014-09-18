@@ -158,7 +158,6 @@ class RRCCounty
 end
 
 def get_lease_pages(county, year, start_page_num)
-    puts start_page_num
     scraper = RRCCounty.new(county, year, start_page_num)
     scraper.start   
 end
