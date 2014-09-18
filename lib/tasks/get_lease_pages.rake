@@ -2,7 +2,7 @@ class RRCCounty
     attr_accessor :current_page, :browser, :county, :start_page_num,
                   :browser, :url, :current_page, :raw_html_path
 
-    def initialize(county, year, start_page_num=1)
+    def initialize(county, year, start_page_num)
         @county = county
         @start_page_num = start_page_num.to_i
         @browser = Watir::Browser.new(:ff) 
@@ -109,7 +109,7 @@ class RRCCounty
 
 
     def start
-        if @start_page_num.nil?
+        if @start_page_num == 1
             process_lease_page
         else
             proceed_to_page_num
@@ -122,7 +122,7 @@ class RRCCounty
         unless Dir.exists?(File.join(Rails.root, 'raw_html', @county))
             FileUtils::mkdir(File.join(Rails.root, 'raw_html', @county))
         end
-        File.open(Rails.root + "raw_html/#{@current_page}.html", 'w') { |f| f.write(html) } 
+        File.open(Rails.root + "raw_html/#{county}/#{@current_page}.html", 'w') { |f| f.write(html) } 
         @current_page += 1
     end
 
@@ -158,6 +158,7 @@ class RRCCounty
 end
 
 def get_lease_pages(county, year, start_page_num)
+    puts start_page_num
     scraper = RRCCounty.new(county, year, start_page_num)
     scraper.start   
 end

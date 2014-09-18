@@ -8,7 +8,7 @@ Rails.application.load_tasks
 namespace :rrc_flaring do
 
   task :get_lease_pages => :environment do
-    get_lease_pages(ENV["COUNTY"], ENV["YEAR"], ENV["START_PAGE_NUM"])
+    get_lease_pages(ENV["COUNTY"], ENV["YEAR"], ENV["START_PAGE_NUM"] || 1)
     end
                    
 end
