@@ -33,7 +33,7 @@ def process_county_tots
             begin
               deets_td = deets_trs[1].css('td')
             rescue NoMethodError => e
-              File.open(Rails.root.join('data', 'processed', 'errors.txt'), 'a') { |f| f.write("#{file}\n") }
+              File.open(Rails.root.join('data', 'processed', 'county_errors.txt'), 'a') { |f| f.write("#{file}\n") }
               next
             end
 
