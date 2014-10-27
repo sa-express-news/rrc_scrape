@@ -14,6 +14,10 @@ namespace :rrc_flaring do
         process_county_tots
     end
 
+    task :process_disp do 
+        process_disp_tots
+    end
+
 
 
                    
