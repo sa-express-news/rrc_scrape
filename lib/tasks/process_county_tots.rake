@@ -58,8 +58,8 @@ def process_county_tots
                 end
             end
 
-            csv << [ 'EWA', county_name, lease_no, lease_name, dist_no, well_type, date, county_gw_prod, county_chead_prod ]
-            #p [ 'EWA', county_name, lease_no, lease_name, dist_no, well_type, date, county_gw_prod, county_chead_prod ]
+            csv << [ county_name, lease_no, lease_name, dist_no, well_type, date, county_gw_prod, county_chead_prod ]
+            #p [ county_name, lease_no, lease_name, dist_no, well_type, date, county_gw_prod, county_chead_prod ]
         end
     end
 end
