@@ -16,9 +16,5 @@ namespace :rrc_flaring do
 
     task :process_disp do 
         process_disp_tots
-    end
-
-
-
-                   
+    end                 
 end
