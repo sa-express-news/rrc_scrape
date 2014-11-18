@@ -33,6 +33,10 @@ class RRCCounty
                 @browser.select_list(:name => 'pager.pageSize').select('View All')
             end
         end
+
+        unless Dir.exists?(File.join(Rails.root, 'data', 'raw_html'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'raw_html'))
+        end
         
         sleep(rand(1..5)*1.25)
 
@@ -119,32 +123,32 @@ class RRCCounty
 
     private
     def write_leases_page(html)
-        unless Dir.exists?(File.join(Rails.root, 'raw_html', @county))
-            FileUtils::mkdir(File.join(Rails.root, 'raw_html', @county))
+        unless Dir.exists?(File.join(Rails.root, 'data', 'raw_html', @county))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'raw_html', @county))
         end
-        File.open(Rails.root + "raw_html/#{county}/#{@current_page}.html", 'w') { |f| f.write(html) } 
+        File.open(Rails.root + "data/raw_html/#{county}/#{@current_page}.html", 'w') { |f| f.write(html) } 
         @current_page += 1
     end
 
     def write_ptd_page(html, lease_num)
-        unless Dir.exists?(File.join(Rails.root, 'raw_html', @county, 'leases', 'ptd'))
-            FileUtils::mkdir_p(File.join(Rails.root, 'raw_html', @county, 'leases', 'ptd'))
+        unless Dir.exists?(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'ptd'))
+            FileUtils::mkdir_p(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'ptd'))
         end
-        File.open(Rails.root + "raw_html/#{@county}/leases/ptd/ptd_#{lease_num}.html", 'w') { |f| f.write(html) }
+        File.open(Rails.root + "data/raw_html/#{@county}/leases/ptd/ptd_#{lease_num}.html", 'w') { |f| f.write(html) }
     end
 
     def write_disp_page(html, lease_num)
-        unless Dir.exists?(File.join(Rails.root, 'raw_html', @county, 'leases', 'disp'))
-            FileUtils::mkdir(File.join(Rails.root, 'raw_html', @county, 'leases', 'disp'))
+        unless Dir.exists?(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'disp'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'disp'))
         end
-        File.open(Rails.root + "raw_html/#{@county}/leases/disp/disp_#{lease_num}.html", 'w') { |f| f.write(html) }
+        File.open(Rails.root + "data/raw_html/#{@county}/leases/disp/disp_#{lease_num}.html", 'w') { |f| f.write(html) }
     end
 
     def write_cnty_pd_page(html, lease_num)
-        unless Dir.exists?(File.join(Rails.root, 'raw_html', @county, 'leases', 'cnty_pd'))
-            FileUtils::mkdir(File.join(Rails.root, 'raw_html', @county, 'leases', 'cnty_pd'))
+        unless Dir.exists?(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'cnty_pd'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'raw_html', @county, 'leases', 'cnty_pd'))
         end
-        File.open(Rails.root + "raw_html/#{@county}/leases/cnty_pd/cnty_pd_#{lease_num}.html", 'w') { |f| f.write(html) }
+        File.open(Rails.root + "data/raw_html/#{@county}/leases/cnty_pd/cnty_pd_#{lease_num}.html", 'w') { |f| f.write(html) }
     end
 
     def next_page
