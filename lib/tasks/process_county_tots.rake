@@ -14,7 +14,11 @@ def process_county_tots
     #                  '/Users/josephkokenge/sa/rrc_scrape/data/raw_html/MCMULLEN/leases/cnty_pd/cnty_pd_17034.html',
     #                  '/Users/josephkokenge/sa/rrc_scrape/data/raw_html/LIVE OAK/leases/cnty_pd/cnty_pd_09944.html',
     #                  '/Users/josephkokenge/sa/rrc_scrape/data/raw_html/KARNES/leases/cnty_pd/cnty_pd_09944.html'
-    #               ]   
+    #               ] 
+
+    unless Dir.exists?(File.join(Rails.root, 'data', 'processed'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'processed'))
+    end  
 
 
     CSV.open(Rails.root.join('data', 'processed', 'county_totals.csv'), "ab") do |csv|

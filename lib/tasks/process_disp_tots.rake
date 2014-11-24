@@ -25,6 +25,10 @@ def process_disp_tots
               'Oct2014', 
               'Nov2014', 
               'Dec2014']
+              
+    unless Dir.exists?(File.join(Rails.root, 'data', 'processed'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'processed'))
+    end
 
     CSV.open(Rails.root.join('data', 'processed', 'disp_totals.csv'), 'ab') do |csv|
       filenames.each do |file|

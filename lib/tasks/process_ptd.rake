@@ -11,6 +11,11 @@ def process_ptds
     #               '/Users/josephkokenge/sa/rrc_scrape/data/raw_html/LIVE OAK/leases/ptd/ptd_001519.html', 
     #               ]
 
+    unless Dir.exists?(File.join(Rails.root, 'data', 'processed'))
+            FileUtils::mkdir(File.join(Rails.root, 'data', 'processed'))
+    end
+
+
     CSV.open(Rails.root.join('data', 'processed', 'ptd_operators.csv'), 'ab') do |csv|
         filenames.each do |file|
             puts "On file: #{file}"
